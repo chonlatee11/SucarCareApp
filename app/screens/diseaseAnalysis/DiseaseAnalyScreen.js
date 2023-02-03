@@ -44,10 +44,10 @@ const DiseaseAnalyScreen = () => {
   const [viewResault, setViewResault] = useState(false);
   const [modalHelpVisible, setModalHelpVisible] = useState(false);
 
-  console.log("photo = " + photo.uri);
-  console.log("ispicture = " + ispicture);
-  console.log(userInfo);
-  console.log(predict);
+  // console.log("photo = " + photo.uri);
+  // console.log("ispicture = " + ispicture);
+  // console.log(userInfo);
+  // console.log(predict);
 
   useEffect(() => {
     if (predict.predicted_label !== "") {
@@ -86,7 +86,7 @@ const DiseaseAnalyScreen = () => {
       .then((response) => {
         let resualt = response.data;
         if (resualt.status == "success") {
-          console.log(resualt);
+          // console.log(resualt);
           Photo("", "", "");
           setDiseaseData({});
           Photo("", "", "");
@@ -94,12 +94,12 @@ const DiseaseAnalyScreen = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   }
 
   async function getInFoDisease() {
-    console.log(predict.predicted_label);
+    // console.log(predict.predicted_label);
     await axios
       .post(getDiseaseResaultUrl, {
         name: predict.predicted_label,
@@ -217,7 +217,7 @@ const DiseaseAnalyScreen = () => {
                     )}
                   </View>
 
-                  <View style={styles.containerResaultText}>
+                  {/* <View style={styles.containerResaultText}>
                     {predict.probability == "" ? (
                       <Text style={styles.buttonText}>ไม่มีข้อมูล</Text>
                     ) : (
@@ -225,7 +225,7 @@ const DiseaseAnalyScreen = () => {
                         มีโอกาสเป็นโรค {predict.probability} %
                       </Text>
                     )}
-                  </View>
+                  </View> */}
 
                   <View style={styles.containerButtonResault}>
                     <IconButton

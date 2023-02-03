@@ -1,11 +1,6 @@
-import React, {useContext, useState, useEffect, useCallback} from 'react';
+import React from 'react';
 import {
-  View,
   StyleSheet,
-  Image,
-  Dimensions,
-  Text,
-  ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Slider from '../../components/Slider/Slider';

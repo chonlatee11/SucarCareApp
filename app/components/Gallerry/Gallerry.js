@@ -9,7 +9,7 @@ import Button from "../Camera/Button";
 import ImageViewer from "./ImageViewer";
 
 const PlaceholderImage = require("../../assets/BGWhite.png");
-const predictUrl = "http://192.168.1.22:8000/predict";
+const predictUrl = "http://192.168.1.22:8800/predict";
 
 export default function GalleryScreen() {
   const { Photo, photo, IsPicture, SetPredict, UseGallerry } =
@@ -24,7 +24,7 @@ export default function GalleryScreen() {
     });
 
     if (!result.canceled) {
-      console.log(result.uri);
+      // console.log(result.uri);
       setSelectedImage(result);
       setShowImage(result.uri);
     } else {
@@ -45,7 +45,7 @@ export default function GalleryScreen() {
       type: type,
       name: filename,
     });
-    console.log(formData);
+    // console.log(formData);
     axios
       .post(predictUrl, formData, {
         method: "POST",
@@ -67,7 +67,7 @@ export default function GalleryScreen() {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 

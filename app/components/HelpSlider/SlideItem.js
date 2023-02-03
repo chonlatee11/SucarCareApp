@@ -1,5 +1,4 @@
 import {
-    Image,
     StyleSheet,
     Text,
     View,
@@ -74,7 +73,7 @@ import {
       color: '#333',
     },
     price: {
-      fontSize: 32,
+      fontSize: 28,
       fontWeight: 'bold',
     },
   });

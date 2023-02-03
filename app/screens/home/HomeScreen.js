@@ -1,8 +1,6 @@
 import React, { useState, useContext, useEffect, useCallback } from "react";
 import {
   View,
-  Text,
-  Button,
   StyleSheet,
   Dimensions,
   ScrollView,
@@ -92,14 +90,14 @@ const HomeScreen = () => {
       .get(baseUrl)
       .then((response) => {
         setDiseaseReport(response.data.data);
-        console.log(response.data.data);
+        // console.log(response.data.data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
-  console.log(userInfo);
+  // console.log(userInfo);
   // console.log(diseaseReport.data);
 
   // console.log(width);

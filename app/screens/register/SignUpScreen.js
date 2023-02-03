@@ -22,7 +22,7 @@ const SignUpScreen = () => {
           location,
           loading: false,
         });
-        console.log(location);
+        // console.log(location);
       })
       .catch(ex => {
         const {code, message} = ex;
@@ -76,7 +76,7 @@ const SignUpScreen = () => {
 
   const onRegisterPress = async data => {
     if (isLoding) return;
-    console.log(location.location.longitude);
+    // console.log(location.location.longitude);
     setIsLoding(true);
     const res = await axios
       .post(`${baseUrl}`, {
@@ -90,7 +90,7 @@ const SignUpScreen = () => {
         longitude: location.location.longitude,
       })
       .then(response => {
-        console.log(response.status);
+        // console.log(response.status);
         if (response.status === 200) {
           Alert.alert('สมัครสมาชิกสำเร็จ', 'กรุณาเข้าสู่ระบบ');
           navigation.navigate('SignIn');
@@ -98,7 +98,7 @@ const SignUpScreen = () => {
       })
       .catch(error => {
         Alert.alert('เกิดข้อผิดพลาด', 'กรุณาลองใหม่อีกครั้ง');
-        console.log(error);
+        // console.log(error);
         return;
       });
     setIsLoding(false);
@@ -161,7 +161,7 @@ const SignUpScreen = () => {
           name={'phoneNumber'}
           control={control}
           label="เบอร์โทรศัพท์"
-          rules={{required: 'กรุณากรอกเบอร์โทรศัพท์'}}
+          rules={{required: 'กรุณากรอกเบอร์โทรศัพท์', maxLength: 10}}
         />
 
         <CustomInput

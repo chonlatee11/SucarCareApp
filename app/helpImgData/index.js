@@ -1,17 +1,17 @@
 export default [
     {
       id: 1,
-      img: require('../assets/img1.jpg'),
-      description: 'ถ่ายภาพอ้อยที่ต้องการ',
+      img: require('../assets/help1.jpg'),
+      description: 'เลือกเมนูถ่ายรูปเพื่อวิเคราะห์โรคอ้อย',
     },
     {
       id: 2,
-      img: require('../assets/img2.jpg'),
-      description: 'โฟกัสส่วนที่ต้องการวิเคราะห์',
+      img: require('../assets/help2.png'),
+      description: 'โฟกัสส่วนที่ต้องการวิเคราะห์ให้อยู่ในกรอบสีแดง',
     },
     {
       id: 3,
-      img: require('../assets/img3.jpg'),
-      description: 'ทำการวิเคราะห์โดยการกดเลือกรูปภาพ',
+      img: require('../assets/help3.1.png'),
+      description: 'ทำการวิเคราะห์โดยการใช้รูปนี้หรือถ่ายใหม่',
     },
   ];

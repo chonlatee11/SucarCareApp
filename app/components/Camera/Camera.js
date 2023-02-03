@@ -3,13 +3,7 @@ import {
   Text,
   View,
   SafeAreaView,
-  Dimensions,
   Image,
-  Modal,
-  Pressable,
-  Alert,
-  ScrollView,
-  ActivityIndicator,
 } from "react-native";
 import { useEffect, useRef, useState, useContext } from "react";
 import { Camera } from "expo-camera";
@@ -19,7 +13,7 @@ import Button from "./Button";
 import { PhotoContext } from "../hook/photoContext";
 import axios from "axios";
 
-const predictUrl = "http://192.168.1.22:8000/predict";
+const predictUrl = "http://192.168.1.22:8800/predict";
 
 export default function CameraSreen() {
   const { Photo, photo, IsPicture, SetPredict, UseCamera } =
@@ -95,7 +89,7 @@ export default function CameraSreen() {
           }
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
     };
 

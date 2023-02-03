@@ -10,7 +10,7 @@ import { AuthContex } from '../../components/AutContext/AutContext';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import { useForm } from 'react-hook-form';
-// import Logo from '../../../assets/image/Logo.jpg';
+import Logo from '../../../assets/logo.png';
 import { useNavigation } from '@react-navigation/native'
 
 
@@ -43,7 +43,7 @@ const SignInScreen = () => {
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root} >
         <Image
-          // source={Logo}
+          source={Logo}
           style={[styles.logo, { height: height * 0.3 }]}
           resizeMode="contain"
         />
@@ -60,9 +60,7 @@ const SignInScreen = () => {
           secureTextEntry={true}
           rules={{ required: 'กรุณากรอกรหัสผ่าน' }}
         />
-
         <CustomButton text={ isloding ? 'กำลังเข้าสู่ระบบ' : 'เข้าสู่ระบบ' }  onPress={handleSubmit(onSignInPressed)} />
-
         <CustomButton
           text="สมัครใช้งาน"
           onPress={onSignUpPress}
@@ -80,9 +78,9 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   logo: {
-    width: '70%',
+    width: '80%',
     maxWidth: 300,
-    maxHeight: 200,
+    maxHeight: 400,
     marginBottom: 20,
   },
 });

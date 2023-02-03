@@ -15,8 +15,8 @@ export const AuthProvider = ({children}) => {
 
   const Login = async (userName, passWord) => {
     setisLoading(true);
-    console.log(userName)
-    console.log(passWord)
+    // console.log(userName)
+    // console.log(passWord)
     const response = await axios
       .post(`${baseUrl}`, {
         userName: userName,
@@ -24,10 +24,10 @@ export const AuthProvider = ({children}) => {
       })
       .then(response => {
         let userInfo = response.data;
-        console.log(userInfo);
+        // console.log(userInfo);
         if(userInfo.status === 401)
         {
-          console.log('Not found');
+          // console.log('Not found');
           Alert.alert('เกิดข้อผิดพลาด', 'ไม่พบข้อมูลผู้ใช้งาน');
         }else
         {
@@ -41,7 +41,7 @@ export const AuthProvider = ({children}) => {
       })
       .catch(error => {
         Alert.alert('เกิดข้อผิดพลาด', 'กรุณาลองใหม่อีกครั้ง');
-        console.log(error);
+        // console.log(error);
       });
     setisLoading(false);
   };

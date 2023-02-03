@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import AppNavigation from './app/navigation/navigation';
 import {AuthProvider} from './app/components/AutContext/AutContext';

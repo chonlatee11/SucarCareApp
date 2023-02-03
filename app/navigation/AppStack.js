@@ -68,7 +68,7 @@ const AppStack = () => {
         options={{
           tabBarLabel: 'คู่มือการใช้งาน',
           tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons name="help" color={color} size={26} />
+            <MaterialCommunityIcons name="note" color={color} size={26} />
           ),
         }}
       />

@@ -36,13 +36,13 @@ const ProfileScreen = () => {
         userID: userInfo.UserID,
       })
       .then(response => {
-        console.log(response.status);
+        // console.log(response.status);
         if (response.status === 200) {
           setDiseaseData(response.data.data);
         }
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
         return;
       });
     // console.log(diseaseData);
@@ -52,8 +52,8 @@ const ProfileScreen = () => {
     getDiseaseData();
   }, []);
 
-  console.log(userInfo);
-  console.log(diseaseData);
+  // console.log(userInfo);
+  // console.log(diseaseData);
 
   return (
     <ScrollView
@@ -119,7 +119,7 @@ const ProfileScreen = () => {
                 <DataTable.Row
                   key={diseaseData.ReportID}
                   onPress={() => {
-                    console.log(`selected account ${diseaseData.DiseaseName}`);
+                    // console.log(`selected account ${diseaseData.DiseaseName}`);
                   }}>
                   <DataTable.Cell>{diseaseData.DateReport}</DataTable.Cell>
                   <DataTable.Cell>{diseaseData.DiseaseName}</DataTable.Cell>

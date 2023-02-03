@@ -48,7 +48,7 @@ const DiseaseScreen = () => {
         setDiseaseData(response.data.data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
@@ -56,7 +56,7 @@ const DiseaseScreen = () => {
     getDiseaseData();
   }, []);
 
-  console.log(diseaseData.data);
+  // console.log(diseaseData.data);
   return (
     <View style={styles.container}>
       <FlatList

@@ -7,7 +7,7 @@ import {useForm} from 'react-hook-form';
 import axios from 'axios';
 import GetLocation from 'react-native-get-location';
 
-const baseUrl = 'http://192.168.1.22:3030/register';
+const baseUrl = 'http://192.168.1.22:3001/register';
 
 const SignUpScreen = () => {
   const [location, setLocation] = useState([]);

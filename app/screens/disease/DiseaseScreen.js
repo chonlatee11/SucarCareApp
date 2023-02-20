@@ -4,7 +4,7 @@ import { FlatList } from "react-native-gesture-handler";
 import { Button, Card, Paragraph } from "react-native-paper";
 import axios from "axios";
 
-const baseUrl = "http://192.168.1.22:3032/getDisease";
+const baseUrl = "http://192.168.1.22:3002/getDisease";
 
 const CardItem = ({ item }) => {
   const [readMore, setReadMore] = useState(false);

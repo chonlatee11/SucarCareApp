@@ -9,7 +9,7 @@ import Button from "../Camera/Button";
 import ImageViewer from "./ImageViewer";
 
 const PlaceholderImage = require("../../assets/BGWhite.png");
-const predictUrl = "http://192.168.1.22:8800/predict";
+const predictUrl = "http://192.168.1.22:3004/predict";
 
 export default function GalleryScreen() {
   const { Photo, photo, IsPicture, SetPredict, UseGallerry } =

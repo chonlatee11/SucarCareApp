@@ -21,8 +21,8 @@ import { AuthContex } from "../../components/AutContext/AutContext";
 import { PhotoContext } from "../../components/hook/photoContext";
 import Slider from "../../components/HelpSlider/Slider";
 
-const getDiseaseResaultUrl = "http://192.168.1.22:3032/diseaseresualt";
-const putReportUrl = "http://192.168.1.22:3032/ReportDisease";
+const getDiseaseResaultUrl = "http://192.168.1.22:3002/diseaseresualt";
+const putReportUrl = "http://192.168.1.22:3002/ReportDisease";
 const { width, height } = Dimensions.get("window");
 
 const DiseaseAnalyScreen = () => {

@@ -13,7 +13,7 @@ import Button from "./Button";
 import { PhotoContext } from "../hook/photoContext";
 import axios from "axios";
 
-const predictUrl = "http://192.168.1.22:8800/predict";
+const predictUrl = "http://192.168.1.22:3004/predict";
 
 export default function CameraSreen() {
   const { Photo, photo, IsPicture, SetPredict, UseCamera } =

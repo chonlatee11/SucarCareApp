@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export const AuthContex = createContext();
 
-const baseUrl = 'http://192.168.1.22:3030/login';
+const baseUrl = 'http://192.168.1.22:3001/login';
 // const baseUrl = 'https://www.melivecode.com/api/login';
 
 export const AuthProvider = ({children}) => {

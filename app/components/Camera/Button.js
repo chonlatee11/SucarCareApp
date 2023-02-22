@@ -5,7 +5,7 @@ function Button({ label, theme , onPress,icon, disabled}) {
     if (theme === "primary") {
         return (
           <View
-          style={[styles.buttonContainer, { borderWidth: 4, borderColor: "blue", borderRadius: 15 }]}
+          style={[styles.buttonContainer, { borderWidth: 3, borderColor: "blue", borderRadius: 15 }]}
           >
             <Pressable
               disabled={disabled}
@@ -34,8 +34,8 @@ function Button({ label, theme , onPress,icon, disabled}) {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    width: 320,
-    height: 68,
+    width: 280,
+    height: 42,
     marginHorizontal: 20,
     alignItems: 'center',
     justifyContent: 'center',

@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ActivityIndicator } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { PhotoContext } from "../hook/photoContext";
 import axios from "axios";
@@ -9,13 +9,14 @@ import Button from "../Camera/Button";
 import ImageViewer from "./ImageViewer";
 
 const PlaceholderImage = require("../../assets/BGWhite.png");
-const predictUrl = "http://192.168.1.22:3004/predict";
+const predictUrl = "http://192.168.219.153:3004/predict";
 
 export default function GalleryScreen() {
-  const { Photo, photo, IsPicture, SetPredict, UseGallerry } =
+  const { Photo, IsPicture, SetPredict, UseGallerry } =
     useContext(PhotoContext);
   const [selectedImage, setSelectedImage] = useState(null);
   const [showImage, setShowImage] = useState(null);
+  const [isloading, setIsloading] = useState(false)
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -46,6 +47,7 @@ export default function GalleryScreen() {
       name: filename,
     });
     // console.log(formData);
+    setIsloading(true)
     axios
       .post(predictUrl, formData, {
         method: "POST",
@@ -64,12 +66,21 @@ export default function GalleryScreen() {
           );
           IsPicture(false);
           UseGallerry(false);
+          setIsloading(false)
         }
       })
       .catch((error) => {
         // console.log(error);
       });
   };
+
+  if(isloading === true) {
+    return(
+      <View style={[styles.container, styles.horizontal]}>
+      <ActivityIndicator size="large" color="#00ff00" />
+  </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -101,5 +112,10 @@ const styles = StyleSheet.create({
   footerContainer: {
     flex: 1 / 3,
     alignItems: "center",
+  },
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10,
   },
 });

@@ -21,8 +21,8 @@ import { AuthContex } from "../../components/AutContext/AutContext";
 import { PhotoContext } from "../../components/hook/photoContext";
 import Slider from "../../components/HelpSlider/Slider";
 
-const getDiseaseResaultUrl = "http://192.168.1.22:3002/diseaseresualt";
-const putReportUrl = "http://192.168.1.22:3002/ReportDisease";
+const getDiseaseResaultUrl = "http://192.168.219.153:3002/diseaseresualt";
+const putReportUrl = "http://192.168.219.153:3002/ReportDisease";
 const { width, height } = Dimensions.get("window");
 
 const DiseaseAnalyScreen = () => {
@@ -217,7 +217,7 @@ const DiseaseAnalyScreen = () => {
                     )}
                   </View>
 
-                  {/* <View style={styles.containerResaultText}>
+                  <View style={styles.containerResaultText}>
                     {predict.probability == "" ? (
                       <Text style={styles.buttonText}>ไม่มีข้อมูล</Text>
                     ) : (
@@ -225,7 +225,7 @@ const DiseaseAnalyScreen = () => {
                         มีโอกาสเป็นโรค {predict.probability} %
                       </Text>
                     )}
-                  </View> */}
+                  </View>
 
                   <View style={styles.containerButtonResault}>
                     <IconButton
@@ -340,7 +340,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     maxWidth: 300,
-    maxHeight: 300,
+    maxHeight: 320,
     borderRadius: 10,
   },
 

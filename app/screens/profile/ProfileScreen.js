@@ -15,7 +15,7 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // const baseUrl = 'https://jsonplaceholder.typicode.com/photos?_limit=10';
-const baseUrl = 'http://192.168.1.22:3002/diseasereport';
+const baseUrl = 'http://192.168.219.153:3002/diseasereport';
 
 const ProfileScreen = () => {
   const {userInfo, Logout} = useContext(AuthContex);

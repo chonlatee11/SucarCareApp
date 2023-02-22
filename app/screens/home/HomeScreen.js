@@ -11,7 +11,7 @@ import MapView, { Marker } from "react-native-maps";
 import axios from "axios";
 import { StatusBar } from "expo-status-bar";
 
-const baseUrl = "http://192.168.1.22:3002/diseaseallreport";
+const baseUrl = "http://192.168.219.153:3002/diseaseallreport";
 const { width, height } = Dimensions.get("window");
 // const markers = [
 //   {

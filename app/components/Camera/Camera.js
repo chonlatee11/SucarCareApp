@@ -4,6 +4,7 @@ import {
   View,
   SafeAreaView,
   Image,
+  ActivityIndicator
 } from "react-native";
 import { useEffect, useRef, useState, useContext } from "react";
 import { Camera } from "expo-camera";
@@ -13,7 +14,7 @@ import Button from "./Button";
 import { PhotoContext } from "../hook/photoContext";
 import axios from "axios";
 
-const predictUrl = "http://192.168.1.22:3004/predict";
+const predictUrl = "http://192.168.219.153:3004/predict";
 
 export default function CameraSreen() {
   const { Photo, photo, IsPicture, SetPredict, UseCamera } =
@@ -22,6 +23,7 @@ export default function CameraSreen() {
   const [hasCameraPermission, setHasCameraPermission] = useState();
   const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState();
   const [PickImage, setPickImage] = useState();
+  const [isloading, setIsloading] = useState(false)
 
   useEffect(() => {
     (async () => {
@@ -68,6 +70,7 @@ export default function CameraSreen() {
         type: type,
         name: filename,
       });
+      setIsloading(true)
       axios
         .post(predictUrl, formData, {
           method: "POST",
@@ -86,12 +89,21 @@ export default function CameraSreen() {
             );
             IsPicture(false);
             UseCamera(false);
+            setIsloading(false)
           }
         })
         .catch((error) => {
           // console.log(error);
         });
     };
+
+    if(isloading === true) {
+      return(
+        <View style={[styles.container, styles.horizontal]}>
+        <ActivityIndicator size="large" color="#00ff00" />
+    </View>
+      );
+    }
 
     return (
       <SafeAreaView style={styles.container}>
@@ -159,10 +171,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     margin: 10,
   },
-  footerContainer: {
-    flex: 1 / 3,
-    alignItems: "center",
-  },
   optionsContainer: {
     position: "absolute",
     bottom: 80,
@@ -190,5 +198,10 @@ const styles = StyleSheet.create({
     opacity: 0.9,
     fontSize: 20,
     backgroundColor: "rgba(52, 52, 52, 0.5)",
+  },
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10,
   },
 });

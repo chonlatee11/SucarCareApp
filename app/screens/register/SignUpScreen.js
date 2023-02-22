@@ -7,7 +7,7 @@ import {useForm} from 'react-hook-form';
 import axios from 'axios';
 import GetLocation from 'react-native-get-location';
 
-const baseUrl = 'http://192.168.1.22:3001/register';
+const baseUrl = 'http://192.168.219.153:3001/register';
 
 const SignUpScreen = () => {
   const [location, setLocation] = useState([]);
@@ -98,7 +98,7 @@ const SignUpScreen = () => {
       })
       .catch(error => {
         Alert.alert('เกิดข้อผิดพลาด', 'กรุณาลองใหม่อีกครั้ง');
-        // console.log(error);
+        console.log(error);
         return;
       });
     setIsLoding(false);

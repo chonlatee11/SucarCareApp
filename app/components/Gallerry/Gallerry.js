@@ -4,12 +4,11 @@ import { StyleSheet, View, ActivityIndicator } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { PhotoContext } from "../hook/photoContext";
 import axios from "axios";
-
 import Button from "../Camera/Button";
 import ImageViewer from "./ImageViewer";
+import { predic_API_Url } from "../API/config/apiconfig";
 
 const PlaceholderImage = require("../../assets/BGWhite.png");
-const predictUrl = "http://192.168.219.153:3004/predict";
 
 export default function GalleryScreen() {
   const { Photo, IsPicture, SetPredict, UseGallerry } =
@@ -49,7 +48,7 @@ export default function GalleryScreen() {
     // console.log(formData);
     setIsloading(true)
     axios
-      .post(predictUrl, formData, {
+      .post(predic_API_Url, formData, {
         method: "POST",
         body: formData,
         headers: {

@@ -1,21 +1,27 @@
 import {SafeAreaView, StyleSheet} from 'react-native';
 import AppNavigation from './app/navigation/navigation';
 import {AuthProvider} from './app/components/AutContext/AutContext';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const App = () => {
   return (
    <AuthProvider>
-     <SafeAreaView style={styles.root}>
+      <SafeAreaProvider>
+     <SafeAreaView style={styles.container}>
        <AppNavigation />  
      </SafeAreaView>
+      </SafeAreaProvider>
    </AuthProvider>   
    ); 
 };
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: '#F9FBFC',
+  container: {
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+    flexDirection: 'row',
+    flexWrap: 'wrap'    
   },
 });
 

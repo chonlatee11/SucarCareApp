@@ -20,9 +20,8 @@ import axios from "axios";
 import { AuthContex } from "../../components/AutContext/AutContext";
 import { PhotoContext } from "../../components/hook/photoContext";
 import Slider from "../../components/HelpSlider/Slider";
+import { getDiseaseResault_API_Url, putReport_API_Url } from "../../components/API/config/apiconfig";
 
-const getDiseaseResaultUrl = "http://192.168.219.153:3002/diseaseresualt";
-const putReportUrl = "http://192.168.219.153:3002/ReportDisease";
 const { width, height } = Dimensions.get("window");
 
 const DiseaseAnalyScreen = () => {
@@ -44,10 +43,6 @@ const DiseaseAnalyScreen = () => {
   const [viewResault, setViewResault] = useState(false);
   const [modalHelpVisible, setModalHelpVisible] = useState(false);
 
-  // console.log("photo = " + photo.uri);
-  // console.log("ispicture = " + ispicture);
-  // console.log(userInfo);
-  // console.log(predict);
 
   useEffect(() => {
     if (predict.predicted_label !== "") {
@@ -75,8 +70,10 @@ const DiseaseAnalyScreen = () => {
     formData.append("DiseaseImage", photo.name);
     formData.append("ResaultPredict", predict.probability);
     formData.append("AddressUser", userInfo.Address);
+    // console.log("🚀 ~ file: DiseaseAnalyScreen.js:55 ~ sendReport ~ formData:", formData)
+    // console.log("🚀 ~ file: DiseaseAnalyScreen.js:96 ~ sendReport ~ putReport_API_Url:", putReport_API_Url)
     await axios
-      .put(putReportUrl, formData, {
+      .put(putReport_API_Url, formData, {
         method: "PUT",
         body: formData,
         headers: {
@@ -97,11 +94,12 @@ const DiseaseAnalyScreen = () => {
         // console.log(error);
       });
   }
+      
 
   async function getInFoDisease() {
     // console.log(predict.predicted_label);
     await axios
-      .post(getDiseaseResaultUrl, {
+      .post(getDiseaseResault_API_Url, {
         name: predict.predicted_label,
       })
       .then(function (response) {

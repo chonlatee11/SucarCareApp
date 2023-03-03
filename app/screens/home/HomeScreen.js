@@ -10,67 +10,9 @@ import { AuthContex } from "../../components/AutContext/AutContext";
 import MapView, { Marker } from "react-native-maps";
 import axios from "axios";
 import { StatusBar } from "expo-status-bar";
+import { diseaseallreport_API_Url } from "../../components/API/config/apiconfig";
 
-const baseUrl = "http://192.168.219.153:3002/diseaseallreport";
 const { width, height } = Dimensions.get("window");
-// const markers = [
-//   {
-//     ReportID: 1,
-//     latitude: 37.8022259,
-//     longitude: -122.4351431,
-//     title: 'Amazing Food Place',
-//     description: 'This is the best food place',
-//     rating: 4,
-//     reviews: 99,
-//   },
-//   {
-//     ReportID: 2,
-//     latitude: 37.7896386,
-//     longitude: -122.421646,
-//     title: 'Second Amazing Food Place',
-//     description: 'This is the second best food place',
-//     rating: 5,
-//     reviews: 102,
-//   },
-//   {
-//     ReportID: 3,
-//     latitude: 37.7665248,
-//     longitude: -122.4161628,
-
-//     title: 'Third Amazing Food Place',
-//     description: 'This is the third best food place',
-//     rating: 3,
-//     reviews: 220,
-//   },
-//   {
-//     ReportID: 4,
-
-//     latitude: 37.7734153,
-//     longitude: -122.4577787,
-
-//     title: 'Fourth Amazing Food Place',
-//     description: 'This is the fourth best food place',
-//     rating: 4,
-//     reviews: 48,
-//   },
-//   {
-//     ReportID: 5,
-//     latitude: 37.7948605,
-//     longitude: -122.4596065,
-//     title: 'Fifth Amazing Food Place',
-//     description: 'This is the fifth best food place',
-//     rating: 4,
-//     reviews: 178,
-//   },
-// ];
-
-// const Marker = () => {
-//   return (
-//     <View style={styles.marker}>
-//       <View style={styles.ring} />
-//     </View>
-//   );
-// }
 
 const HomeScreen = () => {
   const { userInfo } = useContext(AuthContex);
@@ -87,7 +29,7 @@ const HomeScreen = () => {
 
   const getDiseaseReport = async () => {
     axios
-      .get(baseUrl)
+      .get(diseaseallreport_API_Url)
       .then((response) => {
         setDiseaseReport(response.data.data);
         // console.log(response.data.data);

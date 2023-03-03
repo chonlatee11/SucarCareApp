@@ -2,11 +2,9 @@ import React, {createContext, useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Alert} from 'react-native';
 import axios from 'axios';
+import { login_API_URL } from "../API/config/apiconfig";
 
 export const AuthContex = createContext();
-
-const baseUrl = 'http://192.168.219.153:3001/login';
-// const baseUrl = 'https://www.melivecode.com/api/login';
 
 export const AuthProvider = ({children}) => {
   const [isLoading, setisLoading] = useState(false);
@@ -18,17 +16,20 @@ export const AuthProvider = ({children}) => {
     // console.log(userName)
     // console.log(passWord)
     const response = await axios
-      .post(`${baseUrl}`, {
+      .post(`${login_API_URL}`, {
         userName: userName,
         passWord: passWord,
       })
       .then(response => {
         let userInfo = response.data;
-        // console.log(userInfo);
+        // console.log(userInfo.status=== 401);
         if(userInfo.status === 401)
         {
           // console.log('Not found');
           Alert.alert('เกิดข้อผิดพลาด', 'ไม่พบข้อมูลผู้ใช้งาน');
+        }else if(userInfo.status === 402)
+        {
+          Alert.alert('เกิดข้อผิดพลาด', 'กรุณาตรวจสอบรหัสผ่าน');
         }else
         {
           setUserInfo(userInfo.user);

@@ -17,7 +17,7 @@ const AppStack = () => {
   return (
     
     <Tab.Navigator
-      screenOptions={{headerShown: true}}
+      screenOptions={{headerShown: false}}
       initialRouteName="Home"
       activeColor="#FFFF"
       barStyle={{backgroundColor: 'skyblue'}}>

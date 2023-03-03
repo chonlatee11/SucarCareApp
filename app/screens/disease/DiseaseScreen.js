@@ -3,8 +3,7 @@ import { View, Text, StyleSheet, RefreshControl } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { Button, Card, Paragraph } from "react-native-paper";
 import axios from "axios";
-
-const baseUrl = "http://192.168.219.153:3002/getDisease";
+import { getDisease_API_Url } from "../../components/API/config/apiconfig";
 
 const CardItem = ({ item }) => {
   const [readMore, setReadMore] = useState(false);
@@ -43,7 +42,7 @@ const DiseaseScreen = () => {
 
   const getDiseaseData = async () => {
     const response = await axios
-      .get(baseUrl)
+      .get(getDisease_API_Url)
       .then((response) => {
         setDiseaseData(response.data.data);
       })

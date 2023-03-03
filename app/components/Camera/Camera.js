@@ -14,7 +14,8 @@ import Button from "./Button";
 import { PhotoContext } from "../hook/photoContext";
 import axios from "axios";
 
-const predictUrl = "http://192.168.219.153:3004/predict";
+import { predic_API_Url } from "../API/config/apiconfig";
+
 
 export default function CameraSreen() {
   const { Photo, photo, IsPicture, SetPredict, UseCamera } =
@@ -72,7 +73,7 @@ export default function CameraSreen() {
       });
       setIsloading(true)
       axios
-        .post(predictUrl, formData, {
+        .post(predic_API_Url, formData, {
           method: "POST",
           body: formData,
           headers: {

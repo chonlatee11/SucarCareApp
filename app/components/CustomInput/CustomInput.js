@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import { TextInput } from 'react-native-paper';
-import {Controller} from 'react-hook-form';
+import { Controller} from 'react-hook-form';
 
 const CustomInput = ({
   control,
@@ -10,6 +10,9 @@ const CustomInput = ({
   label,
   secureTextEntry,
   multiline,
+  keyboardType,
+  icon,
+  errormessage,
 }) => {
   return (
     <Controller
@@ -23,18 +26,20 @@ const CustomInput = ({
               styles.container,
               {borderColor: error ? 'red' : 'white'},
             ]}>
-            <TextInput
-              value={value}
-              onChangeText={onChange}
-              onBlur={onBlur}
-              label={label}
-              style={styles.input}
-              secureTextEntry={secureTextEntry}
-              multiline={multiline}
-            />
+                <TextInput
+                  value={value}
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  label={label}
+                  style={styles.input}
+                  secureTextEntry={secureTextEntry}
+                  multiline={multiline}
+                  keyboardType={keyboardType}
+                  right={icon}
+                />
           </View>
           {error && (
-            <Text style={{color: 'red', alignSelf: 'stretch'}}>{error.message || 'Error'}</Text>
+            <Text style={{color: 'red', alignSelf: 'stretch'}}>{error.message || errormessage}</Text>
           )}
         </>
       )}

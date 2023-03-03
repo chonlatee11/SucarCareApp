@@ -11,11 +11,8 @@ import {
   DataTable,
   Button,
 } from 'react-native-paper';
-
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-// const baseUrl = 'https://jsonplaceholder.typicode.com/photos?_limit=10';
-const baseUrl = 'http://192.168.219.153:3002/diseasereport';
+import { diseaseReport_API_Url } from "../../components/API/config/apiconfig";
 
 const ProfileScreen = () => {
   const {userInfo, Logout} = useContext(AuthContex);
@@ -32,7 +29,7 @@ const ProfileScreen = () => {
 
   const getDiseaseData = async () => {
     const res = await axios
-      .post(`${baseUrl}`, {
+      .post(`${diseaseReport_API_Url}`, {
         userID: userInfo.UserID,
       })
       .then(response => {

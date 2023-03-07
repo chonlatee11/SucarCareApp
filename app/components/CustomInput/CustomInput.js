@@ -13,6 +13,7 @@ const CustomInput = ({
   keyboardType,
   icon,
   errormessage,
+  rows,
 }) => {
   return (
     <Controller
@@ -34,6 +35,7 @@ const CustomInput = ({
                   style={styles.input}
                   secureTextEntry={secureTextEntry}
                   multiline={multiline}
+                  rows={rows}
                   keyboardType={keyboardType}
                   right={icon}
                 />

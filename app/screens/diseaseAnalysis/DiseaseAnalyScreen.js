@@ -168,7 +168,7 @@ const DiseaseAnalyScreen = () => {
               UseCamera(true);
             }}
           />
-          <TouchableOpacity>
+          
             <Button
               theme="primary"
               icon={"picture-o"}
@@ -178,9 +178,6 @@ const DiseaseAnalyScreen = () => {
                 UseGallerry(true);
               }}
             />
-          </TouchableOpacity>
-
-          <TouchableOpacity>
             <Button
               theme="primary"
               icon={"bug"}
@@ -189,10 +186,10 @@ const DiseaseAnalyScreen = () => {
                 setModalVisible(true);
               }}
             ></Button>
-          </TouchableOpacity>
+          
         </View>
 
-        <SafeAreaView style={styles.centeredView}>
+        <SafeAreaView style={styles.modalView}>
           <Modal
             animationType="slide"
             transparent={true}
@@ -201,8 +198,8 @@ const DiseaseAnalyScreen = () => {
               setModalVisible(!modalVisible);
             }}
           >
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
+            <View style={styles.innerModal}>
+              <View>
                 <SafeAreaView>
                   <View style={styles.containerImageModal}>
                     {diseaseData == null ? (
@@ -279,7 +276,7 @@ const DiseaseAnalyScreen = () => {
           </Modal>
         </SafeAreaView>
 
-        <SafeAreaView style={styles.centeredView}>
+        <SafeAreaView style={styles.modalView}>
           <Modal
             animationType="slide"
             transparent={true}
@@ -288,20 +285,16 @@ const DiseaseAnalyScreen = () => {
               setModalHelpVisible(!modalHelpVisible);
             }}
           >
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-                <SafeAreaView>
-                  <Slider />
-                </SafeAreaView>
-                <IconButton
+            <View style={styles.innerModal}>
+            <IconButton
                   name="close"
                   color={"#AD8B73"}
                   onPress={() => {
                     setModalHelpVisible(!modalHelpVisible);
                   }}
                   icon="close"
-                />
-              </View>
+            />
+              <Slider />
             </View>
           </Modal>
         </SafeAreaView>
@@ -319,6 +312,9 @@ export default DiseaseAnalyScreen;
 
 const styles = StyleSheet.create({
   container: {
+    // backgroundColor: "red",
+    width: "100%",
+    height: "100%",
     flexDirections: "column",
     justifyContents: "center",
     alignItems: "center",
@@ -330,26 +326,26 @@ const styles = StyleSheet.create({
     // backgroundColor: 'blue',
     alignItems: "center",
     justifyContent: "center",
-    width: 450,
-    height: 400,
+    width: '100%',
+    height: '50%',
   },
 
   Image: {
     width: "100%",
     height: "100%",
-    maxWidth: 300,
-    maxHeight: 320,
+    maxWidth: 320,
+    maxHeight: 350,
     borderRadius: 10,
   },
 
   containerButton: {
     // backgroundColor: 'green',
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignSelf: "center",
-    width: 300,
-    height: 180,
-    paddingTop: 0,
+    width: '80%',
+    height: '48%',
+    // paddingTop: 0,
   },
 
   button: {
@@ -365,41 +361,50 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: "black",
   },
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
+
+  // centeredView: {
+  //   flex: 1,
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  // },
 
   //modal
   modalView: {
-    width: width,
-    height: height,
-    margin: 0,
-    backgroundColor: "#FFFBE9",
-    borderRadius: 5,
-    padding: 35,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-    direction: "inherit",
-    flexWrap: "nowrap",
-    justifyContents: "space-between",
-    flexDirection: "column",
+    justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    // width: width,
+    // height: height,
+    // margin: 0,
+    // backgroundColor: "#FFFBE9",
+    // borderRadius: 5,
+    // padding: 35,
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 4,
+    // elevation: 5,
+    // direction: "inherit",
+    // flexWrap: "nowrap",
+    // justifyContents: "space-between",
+    // flexDirection: "column",
+    // alignItems: "center",
+  },
+  innerModal:{
+    borderRadius: 10,
+    alignItems: "center",
+    backgroundColor: "#FFF",
+    padding: 20,
   },
   containerImageModal: {
     // backgroundColor: 'blue',
     alignItems: "center",
     justifyContent: "center",
-    width: 400,
-    height: 250,
-    flexDirection: "column",
+    width: '100%',
+    height: '50%',
   },
   containerResaultText: {
     // backgroundColor: 'red',
@@ -418,30 +423,30 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   containerButtonResault: {
-    // backgroundColor: 'white',
+    backgroundColor: 'red',
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
     alignSelf: "center",
     width: "100%",
-    paddingTop: 20,
+    paddingTop: 10,
   },
   ScrollView: {
     // backgroundColor: 'pink',
-    marginHorizontal: 20,
+    marginHorizontal: '40%',
     width: "100%",
     height: "100%",
     flexDirection: "column",
   },
   ScrollContainer: {
-    flex: 1,
+    backgroundColor: "#FFFBE9",
     paddingTop: 0,
-    flexDirection: "column",
+    width: "100%",
+    height: '25%',
+    // flexDirection: "row",
   },
   centeredView: {
     justifyContent: "center",
     alignItems: "center",
   },
 });
-
-// export default DiseaseAnalyScreen;

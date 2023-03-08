@@ -50,6 +50,7 @@ import {
   
   const styles = StyleSheet.create({
     container: {
+      // backgroundColor: 'red',
       width,
       height,
       alignItems: 'center',
@@ -63,12 +64,12 @@ import {
       alignItems: 'center',
     },
     title: {
-      fontSize: 24,
+      fontSize: 20,
       fontWeight: 'bold',
       color: '#333',
     },
     description: {
-      fontSize: 18,
+      fontSize: 16,
       marginVertical: 12,
       color: '#333',
     },

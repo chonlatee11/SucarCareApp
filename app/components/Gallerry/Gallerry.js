@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, ActivityIndicator } from "react-native";
+import { StyleSheet, View, ActivityIndicator, Alert } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { PhotoContext } from "../hook/photoContext";
 import axios from "axios";
@@ -28,49 +28,57 @@ export default function GalleryScreen() {
       setSelectedImage(result);
       setShowImage(result.uri);
     } else {
-      alert("You did not select any image.");
+      Alert.alert("You did not select any image.");
     }
   };
 
   let Usepic = () => {
-    let localUri = selectedImage.uri;
-    let filename = localUri.split("/").pop();
-    // Infer the type of the image
-    let match = /\.(\w+)$/.exec(filename);
-    let type = match ? `image/${match[1]}` : `image`;
-    Photo(localUri, type, filename);
-    let formData = new FormData();
-    formData.append("file", {
-      uri: localUri,
-      type: type,
-      name: filename,
-    });
-    // console.log(formData);
-    setIsloading(true)
-    axios
-      .post(predic_API_Url, formData, {
-        method: "POST",
-        body: formData,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((response) => {
-        let resualt = response.data;
-        if (resualt.status_code == 200) {
-          SetPredict(
-            resualt.status_code,
-            resualt.probability,
-            resualt.predicted_label
-          );
-          IsPicture(false);
-          UseGallerry(false);
-          setIsloading(false)
-        }
-      })
-      .catch((error) => {
-        // console.log(error);
+    if(selectedImage === null) {
+      Alert.alert('เกิดข้อผิดพลาด', 'กรุณาเลือกรูปภาพ', [
+        {
+          text: 'OK'
+        }])
+      return;
+    }else{
+      let localUri = selectedImage.uri;
+      let filename = localUri.split("/").pop();
+      // Infer the type of the image
+      let match = /\.(\w+)$/.exec(filename);
+      let type = match ? `image/${match[1]}` : `image`;
+      Photo(localUri, type, filename);
+      let formData = new FormData();
+      formData.append("file", {
+        uri: localUri,
+        type: type,
+        name: filename,
       });
+      // console.log(formData);
+      setIsloading(true)
+      axios
+        .post(predic_API_Url, formData, {
+          method: "POST",
+          body: formData,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          let resualt = response.data;
+          if (resualt.status_code == 200) {
+            SetPredict(
+              resualt.status_code,
+              resualt.probability,
+              resualt.predicted_label
+            );
+            IsPicture(false);
+            UseGallerry(false);
+            setIsloading(false)
+          }
+        })
+        .catch((error) => {
+          // console.log(error);
+        });
+     }
   };
 
   if(isloading === true) {
@@ -83,26 +91,28 @@ export default function GalleryScreen() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.inner}>
       <View style={styles.imageContainer}>
         <ImageViewer
           placeholderImageSource={PlaceholderImage}
           selectedImage={showImage}
         />
       </View>
-      <View style={styles.footerContainer}>
+      <View style={styles.buttonContainer}>
         <Button theme="primary" label="เลือกรูปภาพ" onPress={pickImageAsync} />
         <Button label="ใช้รูปนี้" onPress={Usepic} />
       </View>
       <StatusBar style="auto" />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#2C3333",
-    alignItems: "center",
+    width: "100%",
+    height: "100%",
+    padding: "0%",
   },
   imageContainer: {
     flex: 1,
@@ -117,4 +127,26 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     padding: 10,
   },
+  inner: {
+    backgroundColor: "#2C3333",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  containerImage: {
+    // backgroundColor: 'blue',
+    alignItems: "center",
+    justifyContent: "center",
+    width: '100%',
+    height: '50%',
+  },
+  buttonContainer: {
+    // backgroundColor: 'green',
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    width: '80%',
+    height: '48%',
+    // paddingTop: 0,
+   },
 });

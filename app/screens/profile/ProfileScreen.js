@@ -93,7 +93,7 @@ const ProfileScreen = () => {
               size={20}
             />
             <Text style={{color: '#777777', marginLeft: 20}}>
-              {userInfo.Address}
+              {userInfo.detailAddress} {'ตำบล'} {userInfo.subDistrict} {'อำเภอ'} {userInfo.district} {'จังหวัด'} {userInfo.province} {userInfo.zipCode}
             </Text>
           </View>
           <View style={styles.row}>

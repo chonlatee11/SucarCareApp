@@ -5,18 +5,21 @@ import {
   Dimensions,
   ScrollView,
   RefreshControl,
+  Text,
 } from "react-native";
 import { AuthContex } from "../../components/AutContext/AutContext";
 import MapView, { Marker } from "react-native-maps";
 import axios from "axios";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { StatusBar } from "expo-status-bar";
 import { diseaseallreport_API_Url } from "../../components/API/config/apiconfig";
+import { mapStyle } from "../../components/map/mapStyle";
 
 const { width, height } = Dimensions.get("window");
 
 const HomeScreen = () => {
   const { userInfo } = useContext(AuthContex);
-  let [diseaseReport, setDiseaseReport] = useState([]);
+  const [diseaseReport, setDiseaseReport] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = useCallback(() => {
@@ -50,7 +53,7 @@ const HomeScreen = () => {
   const LATITUDE_DELTA = 0.05;
   const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-  const SAMPLE_REGION = {
+  const REGION = {
     latitude: LATITUDE,
     longitude: LONGITUDE,
     latitudeDelta: 0.04,
@@ -70,7 +73,9 @@ const HomeScreen = () => {
     >
       <View style={styles.viewcontainer}>
         <StatusBar style="auto" hidden={true} />
-        <MapView style={styles.map} initialRegion={SAMPLE_REGION}>
+        <MapView style={styles.map} 
+        initialRegion={REGION}
+        customMapStyle={mapStyle}>
           {diseaseReport.map((marker) => (
             <Marker
               key={marker.ReportID}
@@ -79,7 +84,11 @@ const HomeScreen = () => {
                 longitude: parseFloat(marker.Longitude),
               }}
               title={marker.DiseaseName}
-            ></Marker>
+            >
+             <View>
+              <MaterialCommunityIcons name="virus-outline"  size={30} style={{color: marker.colorShow}}/>
+            </View>
+            </Marker>
           ))}
         </MapView>
       </View>

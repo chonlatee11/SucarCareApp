@@ -107,11 +107,15 @@ export default function CameraSreen() {
     }
 
     return (
-      <SafeAreaView style={styles.container}>
-        <Image
+      <SafeAreaView style={styles.box}>
+        <View style={styles.inner}>
+          <View style={styles.containerImage}>
+          <Image
           style={styles.preview}
           source={{ uri: "data:image/jpg;base64," + PickImage.base64 }}
         />
+          </View>
+        <View style={styles.buttonContainer}>
         {hasMediaLibraryPermission ? (
           <Button
             theme="primary"
@@ -130,6 +134,9 @@ export default function CameraSreen() {
             setPickImage(undefined);
           }}
         />
+          </View>
+        
+        </View>
       </SafeAreaView>
     );
   }
@@ -159,8 +166,13 @@ const styles = StyleSheet.create({
     paddingTop: "10%",
   },
   buttonContainer: {
-    backgroundColor: "#fff",
-    alignSelf: "flex-end",
+   // backgroundColor: 'green',
+   alignItems: "center",
+   justifyContent: "center",
+   alignSelf: "center",
+   width: '80%',
+   height: '48%',
+   // paddingTop: 0,
   },
   preview: {
     alignSelf: "center",
@@ -168,7 +180,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     maxWidth: 350,
-    maxHeight: 450,
+    maxHeight: 350,
     borderRadius: 10,
     margin: 10,
   },
@@ -204,5 +216,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     padding: 10,
+  },
+  box: {
+    width: "100%",
+    height: "100%",
+    padding: "5%",
+  },
+  inner: {
+    flex: 1,
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  containerImage: {
+    // backgroundColor: 'blue',
+    alignItems: "center",
+    justifyContent: "center",
+    width: '100%',
+    height: '50%',
   },
 });

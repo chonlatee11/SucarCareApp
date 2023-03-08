@@ -1,4 +1,4 @@
-import { StyleSheet, View, Pressable, Text } from 'react-native';
+import { StyleSheet, View, Pressable, Text, TouchableOpacity } from 'react-native';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 function Button({ label, theme , onPress,icon, disabled}) {
@@ -7,7 +7,7 @@ function Button({ label, theme , onPress,icon, disabled}) {
           <View
           style={[styles.buttonContainer, { borderWidth: 3, borderColor: "blue", borderRadius: 15 }]}
           >
-            <Pressable
+            <TouchableOpacity
               disabled={disabled}
               style={[styles.button, { backgroundColor: "white" }]}
               onPress={onPress}
@@ -19,30 +19,32 @@ function Button({ label, theme , onPress,icon, disabled}) {
                 style={styles.buttonIcon}
               />
               <Text style={[styles.buttonLabel, { color: "#25292e" }]}>{label}</Text>
-            </Pressable>
+            </TouchableOpacity>
         </View>
         );
       }
   return (
     <View style={styles.buttonContainer}>
-      <Pressable style={styles.button} onPress={onPress}>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
         <Text style={styles.buttonLabel}>{label}</Text>
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    width: 280,
-    height: 42,
-    marginHorizontal: 20,
+    // backgroundColor: 'yellow',
+    width: '100%',
+    height: '17%',
+    // marginHorizontal: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 3,
+    // padding: 3,
     marginBottom: 15,
   },
   button: {
+    backgroundColor: 'blue',
     borderRadius: 10,
     width: '100%',
     height: '100%',

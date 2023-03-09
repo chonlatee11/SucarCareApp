@@ -57,7 +57,10 @@ const ProfileScreen = () => {
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
-      <View style={{paddingTop: '4%'}}>
+        <View style={styles.box}>
+          
+          <View style={styles.inner}>
+          <View style={{paddingTop: '4%'}}>
         <View style={styles.userInfoSection}>
           <View style={{flexDirection: 'row', marginTop: 15, alignItems: 'flex-end', alignContent: 'flex-end'}}>
             <TouchableOpacity>
@@ -107,7 +110,7 @@ const ProfileScreen = () => {
         {/* <View style={styles.horizonRule} /> */}
 
         <View>
-          <DataTable style={styles.userInfoSection}>
+          <DataTable style={styles.tableSection}>
             <DataTable.Header>
               <DataTable.Title>ประวัติการรายงานโรค</DataTable.Title>
             </DataTable.Header>
@@ -126,7 +129,11 @@ const ProfileScreen = () => {
           </DataTable>
         </View>
       </View>
-    </ScrollView>
+            </View>
+        </View>
+            </ScrollView>
+      
+    
   );
 };
 
@@ -137,6 +144,7 @@ const styles = StyleSheet.create({
   userInfoSection: {
     paddingHorizontal: 30,
     marginBottom: 25,
+    width: '100%',
   },
   title: {
     fontSize: 24,
@@ -190,6 +198,24 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 16,
     lineHeight: 26,
+  },
+  box: {
+    width: "100%",
+    height: "100%",
+    // padding: "5%",
+    // backgroundColor: "red",
+  },
+  inner: {
+    flex: 1,
+    // backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  tableSection: {
+    width: '100%',
+    // backgroundColor: 'white',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });
 

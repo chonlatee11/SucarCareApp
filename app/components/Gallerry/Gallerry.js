@@ -28,12 +28,14 @@ export default function GalleryScreen() {
       setSelectedImage(result);
       setShowImage(result.uri);
     } else {
-      Alert.alert("You did not select any image.");
+      Alert.alert("เกิดข้อผิดพลาด", "กรุณาเลือกรูปภาพ");
     }
   };
 
+  // console.log(selectedImage);
+
   let Usepic = () => {
-    if(selectedImage === null) {
+    if(selectedImage === null || selectedImage === undefined || selectedImage.cancelled === true) {
       Alert.alert('เกิดข้อผิดพลาด', 'กรุณาเลือกรูปภาพ', [
         {
           text: 'OK'

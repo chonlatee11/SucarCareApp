@@ -47,6 +47,7 @@ const DiseaseAnalyScreen = () => {
   useEffect(() => {
     if (predict.predicted_label !== "") {
       getInFoDisease();
+      setModalVisible(!modalVisible);
     }
   }, [predict]);
 
@@ -117,8 +118,7 @@ const DiseaseAnalyScreen = () => {
         {diseaseData == {} ? (
           <Text style={styles.buttonText}>ไม่มีข้อมูล</Text>
         ) : (
-          <Text style={styles.text}>
-            ชื่อโรค : {diseaseData.DiseaseName} อาการ :{" "}
+          <Text style={styles.text}> ชื่อโรค : {diseaseData.DiseaseName}{"\n"} อาการ :{" "}
             {diseaseData.InfoDisease}
           </Text>
         )}
@@ -189,7 +189,7 @@ const DiseaseAnalyScreen = () => {
           
         </View>
 
-        <SafeAreaView style={styles.modalView}>
+        <SafeAreaView style={styles.box}>
           <Modal
             animationType="slide"
             transparent={true}
@@ -198,9 +198,7 @@ const DiseaseAnalyScreen = () => {
               setModalVisible(!modalVisible);
             }}
           >
-            <View style={styles.innerModal}>
-              <View>
-                <SafeAreaView>
+            <View style={styles.inner}>     
                   <View style={styles.containerImageModal}>
                     {diseaseData == null ? (
                       <View style={styles.Image}></View>
@@ -238,15 +236,15 @@ const DiseaseAnalyScreen = () => {
                       color={"#AD8B73"}
                     />
                   </View>
-                </SafeAreaView>
+                
 
-                <SafeAreaView style={styles.ScrollContainer}>
+                <View style={styles.ScrollContainer}>
                   {viewResault == true ? (
                     <InFoDiseaseView diseaseData={diseaseData} />
                   ) : (
                     <ProtectDiseaseView diseaseData={diseaseData} />
                   )}
-                </SafeAreaView>
+                </View>
                 <View style={styles.containerButtonResault}>
                   <IconButton
                     disabled={diseaseData == null ? true : false}
@@ -271,7 +269,6 @@ const DiseaseAnalyScreen = () => {
                     icon="close"
                   />
                 </View>
-              </View>
             </View>
           </Modal>
         </SafeAreaView>
@@ -358,40 +355,19 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: "center",
-    fontSize: 15,
+    fontSize: 16,
     color: "black",
   },
-
-  // centeredView: {
-  //   flex: 1,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
-
+  text: {
+    color: "black",
+    fontSize: 16,
+    
+  },
   //modal
   modalView: {
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.7)",
-    // width: width,
-    // height: height,
-    // margin: 0,
-    // backgroundColor: "#FFFBE9",
-    // borderRadius: 5,
-    // padding: 35,
-    // shadowColor: "#000",
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 2,
-    // },
-    // shadowOpacity: 0.25,
-    // shadowRadius: 4,
-    // elevation: 5,
-    // direction: "inherit",
-    // flexWrap: "nowrap",
-    // justifyContents: "space-between",
-    // flexDirection: "column",
-    // alignItems: "center",
   },
   innerModal:{
     borderRadius: 10,
@@ -407,11 +383,11 @@ const styles = StyleSheet.create({
     height: '50%',
   },
   containerResaultText: {
-    // backgroundColor: 'red',
+    // backgroundColor: 'white',
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
-    width: "100%",
+    width: "60%",
     height: "10%",
     paddingTop: 2,
     flexDirection: "column",
@@ -423,17 +399,17 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   containerButtonResault: {
-    backgroundColor: 'red',
+    // backgroundColor: 'aliceblue',
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
     alignSelf: "center",
-    width: "100%",
+    width: "80%",
     paddingTop: 10,
   },
   ScrollView: {
     // backgroundColor: 'pink',
-    marginHorizontal: '40%',
+    // marginHorizontal: '40%',
     width: "100%",
     height: "100%",
     flexDirection: "column",
@@ -441,12 +417,24 @@ const styles = StyleSheet.create({
   ScrollContainer: {
     backgroundColor: "#FFFBE9",
     paddingTop: 0,
-    width: "100%",
-    height: '25%',
+    width: "80%",
+    height: "20%",
     // flexDirection: "row",
   },
   centeredView: {
     justifyContent: "center",
     alignItems: "center",
+  },
+  box: {
+    width: "100%",
+    height: "100%",
+    padding: "5%",
+    // backgroundColor: "red",
+  },
+  inner: {
+    flex: 1,
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

@@ -50,6 +50,7 @@ const DiseaseAnalyScreen = () => {
       setModalVisible(!modalVisible);
     }
   }, [predict]);
+  // console.log(`${userInfo.detailAddress} ${userInfo.subDistrict} ${userInfo.district} ${userInfo.province} ${userInfo.zipCode}`)
 
   async function sendReport() {
     let formData = new FormData();
@@ -70,7 +71,7 @@ const DiseaseAnalyScreen = () => {
     formData.append("DiseaseNameEng", diseaseData.DiseaseNameEng);
     formData.append("DiseaseImage", photo.name);
     formData.append("ResaultPredict", predict.probability);
-    formData.append("AddressUser", userInfo.Address);
+    formData.append("AddressUser", `${userInfo.detailAddress} ตำบล ${userInfo.subDistrict} อำเภอ/เขต ${userInfo.district} จังหวัด ${userInfo.province} ${userInfo.zipCode}`);
     // console.log("🚀 ~ file: DiseaseAnalyScreen.js:55 ~ sendReport ~ formData:", formData)
     // console.log("🚀 ~ file: DiseaseAnalyScreen.js:96 ~ sendReport ~ putReport_API_Url:", putReport_API_Url)
     await axios
@@ -84,6 +85,7 @@ const DiseaseAnalyScreen = () => {
       .then((response) => {
         let resualt = response.data;
         if (resualt.status == "success") {
+          Alert.alert("ส่งข้อมูลสำเร็จ");
           // console.log(resualt);
           Photo("", "", "");
           setDiseaseData({});

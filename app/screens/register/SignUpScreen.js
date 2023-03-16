@@ -470,7 +470,15 @@ const SignUpScreen = () => {
                   </ProgressStep>
               </ProgressSteps> 
           </View>
-              
+                  <IconButton
+                    name="close"
+                    label="ปิด"
+                    color={"#AD8B73"}
+                    onPress={() => {
+                      setModalVisible(!modalVisible);
+                    }}
+                    icon="close"
+                  />
             </View>
           </View>
       </Modal>
@@ -517,9 +525,9 @@ const styles = StyleSheet.create({
   },
   
   buttonStyle: {
-    backgroundColor: "#AD8B73",
-    borderRadius: 30,
-    paddingHorizontal: 20,
+    backgroundColor: "gray",
+    borderRadius: 20,
+    paddingHorizontal: 10,
     paddingVertical: 10,
     marginHorizontal: 10,
   },

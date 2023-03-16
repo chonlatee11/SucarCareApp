@@ -20,7 +20,7 @@ import axios from "axios";
 import { AuthContex } from "../../components/AutContext/AutContext";
 import { PhotoContext } from "../../components/hook/photoContext";
 import Slider from "../../components/HelpSlider/Slider";
-import { getDiseaseResault_API_Url, putReport_API_Url } from "../../components/API/config/apiconfig";
+import { getDiseaseResault_API_Url, putReport_API_Url, ip } from "../../components/API/config/apiconfig";
 
 const { width, height } = Dimensions.get("window");
 
@@ -206,7 +206,7 @@ const DiseaseAnalyScreen = () => {
                       <View style={styles.Image}></View>
                     ) : (
                       <Image
-                        source={{ uri: diseaseData.ImageUrl }}
+                        source={{ uri: `${ip}${diseaseData.ImageUrl}` }}
                         style={styles.Image}
                       />
                     )}

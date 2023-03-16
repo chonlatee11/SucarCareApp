@@ -3,13 +3,13 @@ import { View, Text, StyleSheet, RefreshControl } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { Button, Card, Paragraph } from "react-native-paper";
 import axios from "axios";
-import { getDisease_API_Url } from "../../components/API/config/apiconfig";
+import { getDisease_API_Url, ip } from "../../components/API/config/apiconfig";
 
 const CardItem = ({ item }) => {
   const [readMore, setReadMore] = useState(false);
   return (
     <Card style={styles.CardStyle}>
-      <Card.Cover source={{ uri: item.ImageUrl }} />
+      <Card.Cover source={{ uri: `${ip}${item.ImageUrl}` }} />
       <Card.Content>
         <Card.Title title={item.DiseaseName} />
         <Paragraph numberOfLines={readMore ? 0 : 2}>

@@ -98,7 +98,6 @@ const DiseaseAnalyScreen = () => {
       });
   }
       
-
   async function getInFoDisease() {
     // console.log(predict.predicted_label);
     await axios
@@ -181,6 +180,7 @@ const DiseaseAnalyScreen = () => {
               }}
             />
             <Button
+              disabled={predict.predicted_label === ""}
               theme="primary"
               icon={"bug"}
               label="ดูผลลัพธ์การวิเคราะห์โรค"
@@ -202,14 +202,10 @@ const DiseaseAnalyScreen = () => {
           >
             <View style={styles.inner}>     
                   <View style={styles.containerImageModal}>
-                    {diseaseData == null ? (
-                      <View style={styles.Image}></View>
-                    ) : (
                       <Image
-                        source={{ uri: `${ip}${diseaseData.ImageUrl}` }}
+                        source={{ uri: `${diseaseData.ImageUrl}` }}
                         style={styles.Image}
                       />
-                    )}
                   </View>
 
                   <View style={styles.containerResaultText}>

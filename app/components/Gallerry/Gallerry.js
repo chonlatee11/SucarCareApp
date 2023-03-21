@@ -85,14 +85,14 @@ export default function GalleryScreen() {
 
   if(isloading === true) {
     return(
-      <View style={[styles.container, styles.horizontal]}>
+      <View style={[styles.box, styles.horizontal]}>
       <ActivityIndicator size="large" color="#00ff00" />
   </View>
     );
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.box}>
       <View style={styles.inner}>
       <View style={styles.imageContainer}>
         <ImageViewer
@@ -111,13 +111,12 @@ export default function GalleryScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  box: {
     width: "100%",
     height: "100%",
-    padding: "0%",
   },
   imageContainer: {
-    flex: 1,
+    // flex: 1,
     paddingTop: 58,
   },
   footerContainer: {

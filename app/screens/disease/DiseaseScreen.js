@@ -9,7 +9,7 @@ const CardItem = ({ item }) => {
   const [readMore, setReadMore] = useState(false);
   return (
     <Card style={styles.CardStyle}>
-      <Card.Cover source={{ uri: `${ip}${item.ImageUrl}` }} />
+      <Card.Cover source={{ uri: `${item.ImageUrl}` }} />
       <Card.Content>
         <Card.Title title={item.DiseaseName} />
         <Paragraph numberOfLines={readMore ? 0 : 2}>

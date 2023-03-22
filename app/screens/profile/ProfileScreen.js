@@ -61,13 +61,12 @@ const ProfileScreen = () => {
           
           <View style={styles.inner}>
           <View style={{paddingTop: '4%'}}>
-        <View style={styles.userInfoSection}>
-          <View style={{flexDirection: 'row', marginTop: 15, alignItems: 'flex-end', alignContent: 'flex-end'}}>
+          <View style={{marginTop: 15, alignItems: 'flex-end', alignContent: 'flex-end'}}>
             <TouchableOpacity>
-            <Button style={{alignSelf: 'flex-start'}} onPress={Logout}>ออกจากระบบ</Button>
+            <Button style={{alignSelf: 'flex-end'}} onPress={Logout}>ออกจากระบบ</Button>
             </TouchableOpacity>
             </View>
-          
+        <View style={styles.userInfoSection}>
           <View style={{flexDirection: 'row', marginTop: 15}}>
             <Avatar.Text size={80} label={userInfo.fName.charAt(0) + userInfo.lName.charAt(0)} />
             <View style={{marginLeft: 20}}>
@@ -142,9 +141,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   userInfoSection: {
-    paddingHorizontal: 30,
-    marginBottom: 25,
+    paddingHorizontal: 20,
+    marginBottom: 10,
     width: '100%',
+    // backgroundColor: '#fff',
   },
   title: {
     fontSize: 24,
@@ -208,6 +208,7 @@ const styles = StyleSheet.create({
   inner: {
     flex: 1,
     // backgroundColor: "white",
+    width: "100%",
     alignItems: "center",
     justifyContent: "center",
   },

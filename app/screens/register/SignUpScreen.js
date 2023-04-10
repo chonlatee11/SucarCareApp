@@ -61,7 +61,6 @@ const SignUpScreen = () => {
     },
   });
   const [userNamedata, setUserNameData] = useState([]);
-  
 
   useEffect(() => {
     if (location.length === 0) {
@@ -117,7 +116,7 @@ const SignUpScreen = () => {
           location,
           loading: false,
         });
-        // console.log(location);
+        console.log(location);
       })
       .catch((ex) => {
         const { code, message } = ex;
